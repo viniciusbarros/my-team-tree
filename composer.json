@@ -1,0 +1,38 @@
+{
+    "name": "vmbarross/my-team-tree",
+    "description": "My Team Tree is an app that aims to help agile teams organizing themselves and also gives to the company a big picture of how squads are structured.",
+    "keywords": ["Agile", "Squad", "Team", "Management", "Tool"],
+    "homepage": "http://viniciusbarros.info/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vinicius Moura Barros",
+            "email": "vmbarross@gmail.com",
+            "homepage": "http://viniciusbarros.info/"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "slim/slim": "^3.1",
+        "monolog/monolog": "^1.17",
+        "slim/twig-view": "^2.2",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyTeamTree\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit"
+    }
+}
