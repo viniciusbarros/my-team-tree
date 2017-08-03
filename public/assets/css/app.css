@@ -1,0 +1,80 @@
+body {
+  background-color: #2F4F6D;
+  color: #FFF; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-Aug-2017, 13:23:45
+    Author     : vinicius
+*/
+#homepage h1 {
+  color: #6ABEA7;
+  font-size: 5rem; }
+
+#homepage h2, #homepage h4, #homepage h5 {
+  color: #2F4F6D; }
+
+#contributors .thumbnail {
+  height: 75p;
+  width: 75px; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-Aug-2017, 13:23:52
+    Author     : vinicius
+*/
+.sign-in-form {
+  padding: 1rem 1.5em;
+  border-radius: .5rem;
+  background-color: #2F4F6D; }
+
+.sign-in-form h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-transform: uppercase; }
+
+.sign-in-form label {
+  text-transform: uppercase;
+  color: #adadad;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 1rem; }
+
+.sign-in-form input {
+  color: white; }
+
+.sign-in-form input:focus {
+  opacity: .8;
+  color: #fff; }
+
+.sign-in-form-username,
+.sign-in-form-password {
+  border-radius: 30px;
+  border: none;
+  opacity: .1;
+  transition: all ease .4s; }
+
+.sign-in-form-button {
+  border-radius: 30px;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  padding: 1rem;
+  transition: all ease .4s; }
+
+.sign-in-form-button:hover {
+  background-color: #44c8ed;
+  border-color: #44c8ed;
+  cursor: pointer; }
