@@ -1,0 +1,14 @@
+$primary-color: #2F4F6D;
+$secondary-color: #6ABEA7;
+$tertiary-color: #7CFFC4;
+$quaternary-color: #9FFFF5;
+$quinary-color: #BDFFFD;
+
+body { 
+  background-color: $primary-color; 
+  color: #FFF;
+}
+
+@import 'home';
+@import 'login';
+
