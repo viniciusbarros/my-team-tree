@@ -11,6 +11,11 @@ abstract class DefaultController
 {
     protected $container;
     protected $view;
+    /**
+     *
+     * @var type \Illuminate\Database\Capsule\Manager
+     */
+    protected $db;
     private $headerTemplate = 'app/header.twig';
     private $footerTemplate = 'app/footer.twig';
 
@@ -22,6 +27,7 @@ abstract class DefaultController
     {
         $this->container = $container;
         $this->view      = $this->container->get("view");
+        $this->db = $container->get('db');
     }
 
     /**

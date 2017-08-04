@@ -20,27 +20,27 @@ $dotenv->required($envRequiredConstants);
  * @param type $parameter
  * @return type
  */
-function env($parameter, $default = false) {
-    $value = getenv($parameter);
-    //If not found, uses the default value
-    if ($value == false) {
-        $finalValue = $default;
-    } else {
-        switch (strtolower($value)) {
-            case 'true':
-                $finalValue = true;
-                break;
-            case 'false':
-                $finalValue = false;
-                break;
-            case 'null':
-                $finalValue = null;
-                break;
-            default :
-                $finalValue = $value;
-                break;
-        }
-    }
-
-    return $finalValue;
-}
+//function env($parameter, $default = false) {
+//    $value = getenv($parameter);
+//    //If not found, uses the default value
+//    if ($value == false) {
+//        $finalValue = $default;
+//    } else {
+//        switch (strtolower($value)) {
+//            case 'true':
+//                $finalValue = true;
+//                break;
+//            case 'false':
+//                $finalValue = false;
+//                break;
+//            case 'null':
+//                $finalValue = null;
+//                break;
+//            default :
+//                $finalValue = $value;
+//                break;
+//        }
+//    }
+//
+//    return $finalValue;
+//}

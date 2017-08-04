@@ -31,9 +31,25 @@ define('MAIN_SLIM_SETTINGS',
             'path' => __DIR__.'/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+        'db' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST'),
+            'database' => env('DB_NAME'),
+            'username' => env('DB_USER'),
+            'password' => env('DB_PASS'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => ''
+        ]
     ],
 ]);
 
 
+// Instantiate the app
+$app = new \Slim\App(MAIN_SLIM_SETTINGS);
 
+//Loading View Configuration
+require CONFIG_PATH . DS . 'view.php';
 
+//Loading Databavse
+require CONFIG_PATH . DS . 'database.php';

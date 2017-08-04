@@ -14,14 +14,12 @@ require __DIR__ . '/../vendor/autoload.php';
 
 session_start();
 
+/**
+ * var $app will be created in main.php
+ */
+$app = null;
 //Load main config
 require __DIR__ . '/../config/main.php';
-
-// Instantiate the app
-$app = new \Slim\App(MAIN_SLIM_SETTINGS);
-
-//Loading View Configuration
-require CONFIG_PATH . DS . 'view.php';
 
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
