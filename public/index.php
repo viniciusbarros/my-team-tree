@@ -19,7 +19,7 @@ session_start();
  */
 $app = null;
 //Load main config
-require __DIR__ . '/../config/main.php';
+require __DIR__ . '/../config/app.php';
 
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
