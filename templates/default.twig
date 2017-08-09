@@ -11,6 +11,7 @@
         {% endblock %}
     </head>
     <body>
+
         <div class="top-bar">
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
@@ -18,22 +19,32 @@
                     <li class="has-submenu">
                         <a href="/company">Company</a>
                     </li>
-                    <li><a href="/squads">Squads</a>
-                        <ul class="submenu menu vertical" data-submenu>
-                            <li><a href="#0">Add</a></li>
-                            <li><a href="#0">List</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/squads">Users</a>
-                        <ul class="submenu menu vertical" data-submenu>
-                            <li><a href="#0">Add</a></li>
-                            <li><a href="#0">List</a></li>
-                        </ul>
-                    </li>
+                    {% if auth.isAuthenticated() %}
+                        <li><a href="/squad">Squads</a>
+                            <ul class="submenu menu vertical" data-submenu>
+                                <li><a href="/squad/add">Add</a></li>
+                                <li><a href="/squad/list">List</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/user/list">Users</a>
+                            <ul class="submenu menu vertical" data-submenu>
+                                <li><a href="/user/add">Add</a></li>
+                                <li><a href="/user/list">List</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="top-bar-right">
-                <ul class="menu">
+                <ul class="menu dropdown" data-dropdown-menu>
+                    {% if auth.isAuthenticated() %}
+                        <li><a href="/me">{{ auth.getAuthenticatedUser().name }}</a>
+                            <ul class="submenu menu vertical" data-submenu>
+                                <li><a href="/user/me">My Profile</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                     {#<li><input type="search" placeholder="Search"></li>
                     <li><button type="button" class="button">Search</button></li>#}
                     <li><a href="/about">About</a></li>
