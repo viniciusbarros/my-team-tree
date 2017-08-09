@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Defining Constants
  */
@@ -49,7 +48,27 @@ define('MAIN_SLIM_SETTINGS',
 $app = new \Slim\App(MAIN_SLIM_SETTINGS);
 
 //Loading View Configuration
-require CONFIG_PATH . DS . 'view.php';
+require CONFIG_PATH.DS.'view.php';
 
-//Loading Databavse
-require CONFIG_PATH . DS . 'database.php';
+//Loading Database
+require CONFIG_PATH.DS.'database.php';
+
+//Loading Validation
+require CONFIG_PATH.DS.'validator.php';
+
+//Loading Persinstant Input
+require CONFIG_PATH.DS.'persistantInput.php';
+
+//Loading Persinstant Input
+//require CONFIG_PATH . DS . 'csrf.php';
+
+$container['auth'] = function($container) {
+    return new \MyTeamTree\Auth\Authentication();
+};
+
+$container['flash'] = function($container) {
+    return new \Slim\Flash\Messages();
+};
+
+$container->get('view')->getEnvironment()->addGlobal('flash',
+    $container->get('flash'));

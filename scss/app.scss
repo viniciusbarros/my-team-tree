@@ -3,11 +3,36 @@ $secondary-color: #6ABEA7;
 $tertiary-color: #7CFFC4;
 $quaternary-color: #9FFFF5;
 $quinary-color: #BDFFFD;
+$label-color: #FFFFFF;
+
 
 body { 
-  background-color: $primary-color; 
-  color: #FFF;
+    background-color: $primary-color; 
+    color: #FFF;
 }
+
+$error-color: red;
+$error-bg-color: #f9ecea;
+
+label.error{
+    color: $error-color;
+
+    input{
+        border: 1px solid $error-color;
+    }
+
+    small{
+       
+        color: $error-color;
+        width: 100%;
+        display: block;
+        padding: 0 5px;
+        background-color: $error-bg-color;
+    }
+}
+
+
+
 
 @import 'home';
 @import 'login';

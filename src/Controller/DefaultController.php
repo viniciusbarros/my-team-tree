@@ -11,11 +11,32 @@ abstract class DefaultController
 {
     protected $container;
     protected $view;
+    protected $router;
+
     /**
      *
-     * @var type \Illuminate\Database\Capsule\Manager
+     * @var MyTeamTree\Validation\Validator
+     */
+    protected $validator;
+    protected $csrf;
+
+    /**
+     *
+     * @var \MyTeamTree\Auth\Authentication
+     */
+    protected $auth;
+
+    /**
+     *
+     * @var \Illuminate\Database\Capsule\Manager
      */
     protected $db;
+
+    /**
+     *
+     * @var \Slim\Flash\Messages
+     */
+    protected $flash;
     private $headerTemplate = 'app/header.twig';
     private $footerTemplate = 'app/footer.twig';
 
@@ -27,7 +48,12 @@ abstract class DefaultController
     {
         $this->container = $container;
         $this->view      = $this->container->get("view");
-        $this->db = $container->get('db');
+        $this->db        = $container->get('db');
+        $this->router    = $container->get('router');
+        $this->validator = $container->get('validator');
+//        $this->csrf      = $container->get('csrf');
+        $this->auth      = $container->get('auth');
+        $this->flash     = $container->get('flash');
     }
 
     /**
@@ -51,11 +77,48 @@ abstract class DefaultController
      * @param type $args
      * @return type
      */
-    public function renderPage($response, $templatePath, $args){
+    public function renderPage($response, $templatePath, $args)
+    {
         $this->render($response, $this->headerTemplate, $args);
         $this->render($response, $templatePath, $args);
         $this->render($response, $this->footerTemplate, $args);
 
         //return $header . $page . $footer;
+    }
+
+    protected function makeCsrfAvailable($request)
+    {
+
+        $csrf = $this->container->csrf;
+
+        $csrfFields = '<input type="hidden" name="%s" value="%s">'
+            .'<input type="hidden" name="%s" value="%s">';
+
+        $environment = $this->container->view->getEnvironment();
+        $environment->addGlobal('csrf',
+            [
+            'fields' => sprintf($csrfFields, $csrf->getTokenNameKey(),
+                $request->getAttribute($csrf->getTokenNameKey()),
+                $csrf->getTokenValueKey(),
+                $request->getAttribute($csrf->getTokenValueKey()))
+            ]
+        );
+    }
+
+    /**
+     * Checks if user is authenticated. If not, returns the redirect. Otherwise returns false;
+     * 
+     * @param type $response
+     * @return boolean/Response
+     */
+    protected function forceAuthenticationRedirect($response)
+    {
+        if (!$this->auth->isAuthenticated()) {
+            $this->flash->addMessage('error',
+                "You must be authenticated to see this page, please do login.");
+            return $response->withRedirect($this->router->pathFor('login'));
+        } else {
+            return false;
+        }
     }
 }

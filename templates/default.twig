@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+    <head>
+        {% block head %}
+            <meta charset="utf-8">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{{title|default(constant('SITE_TITLE'))}}</title>
+            <link rel="stylesheet" href="assets/css/foundation.min.css">
+            <link rel="stylesheet" href="assets/css/app.css">
+        {% endblock %}
+    </head>
+    <body>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text">{{constant('SITE_TITLE')}}</li>
+                    <li class="has-submenu">
+                        <a href="/company">Company</a>
+                    </li>
+                    <li><a href="/squads">Squads</a>
+                        <ul class="submenu menu vertical" data-submenu>
+                            <li><a href="#0">Add</a></li>
+                            <li><a href="#0">List</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/squads">Users</a>
+                        <ul class="submenu menu vertical" data-submenu>
+                            <li><a href="#0">Add</a></li>
+                            <li><a href="#0">List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    {#<li><input type="search" placeholder="Search"></li>
+                    <li><button type="button" class="button">Search</button></li>#}
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            {% include 'partials/messages.twig' %}
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id="footer">
+            <footer>
+                {% block footer %}
+                    <div class="grid-x expanded">
+                        <div class="medium-6 columns">
+                            <ul class="menu">
+                                <li><a target="_blank" href="https://opensource.org/licenses/MIT">License</a></li>
+                                <li><a target="_blank" href="https://github.com/viniciusbarros/my-team-tree">Github</a></li>
+                            </ul>
+                        </div>
+                        <div class="medium-6 columns">
+                            <ul class="menu align-right">
+                                <li class="menu-text">Copyright © {{ "now"|date("Y") }} Vinícius Moura Barros</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endblock %}
+            </footer>
+        </div>
+
+        <script src="assets/js/vendor/jquery.js"></script>
+        <script src="assets/js/vendor/what-input.js"></script>
+        <script src="assets/js/vendor/foundation.min.js"></script>
+        <script src="assets/js/app.js"></script>
+    {% block botomScripts %}{%endblock%}
+</body>
+</html>

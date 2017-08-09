@@ -17,7 +17,10 @@
         "monolog/monolog": "^1.17",
         "slim/twig-view": "^2.2",
         "vlucas/phpdotenv": "^2.4",
-        "illuminate/database": "^5.4"
+        "illuminate/database": "^5.4",
+        "respect/validation": "^1.1",
+        "slim/csrf": "^0.8.1",
+        "slim/flash": "^0.2.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,38 @@
+{% if flash.getMessage('error') %}
+    <div class="flash-message callout alert small" data-closable>
+        <h5>Error</h5>
+        {% for msg in flash.getMessage('error') %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
+{% if flash.getMessage('warning') %}
+    <div class="flash-message callout warning small" data-closable>
+        <h5>Warning</h5>
+        {% for msg in flash.getMessage('warning') %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
+{% if flash.getMessage('success') %}
+    <div class="flash-message success warning small" data-closable>
+        <h5>Success</h5>
+        {% for msg in flash.getMessage('success') %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}

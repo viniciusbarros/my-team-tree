@@ -5,18 +5,19 @@
  * and open the template in the editor.
  */
 
-namespace MyTeamTree\Controller;
+namespace MyTeamTree\Middleware;
 
 /**
- * Description of App
+ * Description of Middleware
  *
  * @author vinicius
  */
-class App extends DefaultController
+class DefaultMiddleware
 {
+    protected $container;
 
-    public function home($request, $response, $args)
+    public function __construct($container)
     {
-        $this->renderPage($response, 'app/home.twig', $args);
+        $this->container = $container;
     }
 }

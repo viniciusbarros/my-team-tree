@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    <footer>
+    <footer id="footer">
         <div class="grid-x expanded callout secondary">
             <div class="large-4 columns text-center">
                 <h5>Tags</h5>
@@ -103,3 +103,23 @@
 
 </div>
 
+<script>
+    (function() {
+        getContributors();
+    });
+
+    var contributors;
+    function getContributors() {
+        jQuery.ajax({
+            url: "https://api.github.com/repos/viniciusbarros/my-team-tree/contributors",
+            context: document.body
+        }).done(function (data) {
+            contributors = data;
+            while (contributor = data.pop()) {
+                console.log(contributor.url);
+                jQuery('#contributors').append('<div class="column"><a target="_blank" href="' + contributor.html_url + '"><img class="thumbnail" src="' + contributor.avatar_url + '" alt="' + contributor.login + '" title="' + contributor.login + '"></div>');
+            }
+        });
+    }
+
+</script>
